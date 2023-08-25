@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { addBook, resetStatus } from "@/redux/features/Books/BookSlice";
 import { useGetAllBooksQuery, useGetBooksQuery } from "@/redux/features/Books/Booksapi";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -17,14 +20,14 @@ export default function Products() {
   const [Genre, setGenre] = useState("");
   const [Year, setYear] = useState(0);
   const { togglePostBook } = useAppSelector(state => state.book)
-  const { wishlist, readingList } = useAppSelector(state => state.wishlist);
-  const [addWishlist, { isError: wisherror, isLoading: wishloading }] = usePostWishListMutation()
-  const [addReadingList, { isError: readingerror, isLoading: readingLoading }] = useAddToReadingListMutation()
+  const { wishlist } = useAppSelector(state => state.wishlist);
+  const [addWishlist, { isError: wisherror }] = usePostWishListMutation()
+  const [addReadingList, { isError: readingerror }] = useAddToReadingListMutation()
   console.log(wishlist)
   console.log(wishlist); // 
   const { email } = useAppSelector(state => state.user.user)
-  const { data, error, isLoading } = useGetBooksQuery({ Genre, Year, searchTerm });
-  const { data: mainbook, isError, isLoading: bookloading } = useGetAllBooksQuery(undefined)
+  const { data, isLoading } = useGetBooksQuery({ Genre, Year, searchTerm });
+  const { data: mainbook, isLoading: bookloading } = useGetAllBooksQuery(undefined)
   const { status } = useAppSelector(state => state.book);
   const HandleSearch = (event: any) => {
     event.preventDefault();

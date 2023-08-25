@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAppSelector } from '@/redux/hooks';
 import { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';

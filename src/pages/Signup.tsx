@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 export default function Signup() {
   const { user, isError, error, isLoading } = useAppSelector(state => state.user)
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm<IUser>();
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   interface IUser {
@@ -41,17 +41,13 @@ export default function Signup() {
       <ToastContainer />
       <div className="pb-16">
         <div className='flex justify-center'>
-          <div className=' mt-20 border border-2 px-6 py-20 w-96 text-center'>
+          <div className=' mt-20 border-2 px-6 py-20 w-96 text-center'>
             <p className='font-bold ' >Sign Up Now</p>
             <form onSubmit={handleSubmit(onSubmit)}>
 
               <div className="form-control w-full">
 
               </div>
-
-
-
-
 
               <div className="form-control w-full">
                 <label className="label">

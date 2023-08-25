@@ -5,7 +5,7 @@ import { IBook } from "@/types/BooksType";
 import { Link } from 'react-router-dom';
 export default function Home() {
   const dispatch = useAppDispatch()
-  const { data: result, error, isLoading } = useGetAllBooksQuery(undefined)
+  const { data: result, isLoading } = useGetAllBooksQuery(undefined)
   const handleSingleBook = (book: IBook) => {
     dispatch(addBook(book));
   };

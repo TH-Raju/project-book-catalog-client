@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useGetReadingListQuery, useUpdateReadingStatusMutation } from "@/redux/features/wishlist/wishlistApi";
 import { useAppSelector } from "@/redux/hooks";
 import { AiOutlineCheck } from 'react-icons/ai';
@@ -6,8 +8,8 @@ import './pages.css';
 export default function ReadingLIst() {
   const { email } = useAppSelector(state => state.user.user)
   // console.log(email)
-  const { data, isLoading } = useGetReadingListQuery(email)
-  const [updateStaus, { isLoading: updateLoading, isError, isSuccess, error }] = useUpdateReadingStatusMutation()
+  const { data } = useGetReadingListQuery(email)
+  const [updateStaus, { isLoading: isSuccess, error }] = useUpdateReadingStatusMutation()
   const handleupdateStatus = (id: string) => {
     updateStaus(id)
     console.log(id)

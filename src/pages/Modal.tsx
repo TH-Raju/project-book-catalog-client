@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toggleModal } from "@/redux/features/Books/BookSlice";
 import { useEditProductMutation } from "@/redux/features/Books/Booksapi";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -10,9 +12,9 @@ import { toast } from "react-toastify";
 import './picker.css';
 export default function Modal({ book }: any) {
   const dispatch = useAppDispatch()
-  const [editProduct, { isLoading, isError }] = useEditProductMutation();
-  console.log(isLoading, isError)
-  const { user } = useAppSelector(state => state.user)
+  const [editProduct, { isError }] = useEditProductMutation();
+  // console.log(isLoading, isError)
+  useAppSelector(state => state.user)
   const [publicationDate, setPublicationDate] = useState(new Date());
 
 

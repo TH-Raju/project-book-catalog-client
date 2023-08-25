@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { deleteBook, resetStatus, toggleModal } from "@/redux/features/Books/BookSlice";
 import { useDeleteBookMutation, usePostReviewMutation, useSingleBookQuery } from "@/redux/features/Books/Booksapi";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -11,13 +13,13 @@ export default function ProductDetails() {
   const { id } = useParams()
 
   const [review, setReview] = useState('');
-  const [updatePost, result] = usePostReviewMutation()
-  const { data, isLoading, error } = useSingleBookQuery(id);
+  const [updatePost] = usePostReviewMutation()
+  const { data } = useSingleBookQuery(id);
   const email = useAppSelector(state => state.user.user.email)
   const { modalStatus } = useAppSelector(state => state.book)
   const navigate = useNavigate()
   console.log(data)
-  const [deletePost, response] = useDeleteBookMutation()
+  const [deletePost] = useDeleteBookMutation()
   const dispatch = useAppDispatch()
   const handleDelete = () => {
     deletePost(id!)

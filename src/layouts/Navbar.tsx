@@ -12,6 +12,7 @@ export default function Navbar() {
       dispatch(setUser(null))
     }).catch((error) => {
       // An error happened.
+      console.log(error);
     })
   ]
 

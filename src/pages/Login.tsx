@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import Footer from "@/layouts/Footer";
 import Navbar from "@/layouts/Navbar";
@@ -8,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 export default function Login() {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const location = useLocation()
   const navigate = useNavigate()
   const from = location?.state?.path || '/';
@@ -38,7 +39,7 @@ export default function Login() {
       <ToastContainer />
       <div className="pb-16">
         <div className='flex justify-center'>
-          <div className=' mt-20 border border-2 px-6 py-20 w-96 text-center'>
+          <div className=' mt-20  border-2 px-6 py-20 w-96 text-center'>
             <p className='font-bold ' >Login  Now</p>
             <form onSubmit={handleSubmit(onSubmit)}>
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetWishListQuery } from "@/redux/features/wishlist/wishlistApi";
 import { useAppSelector } from "@/redux/hooks";
 import './pages.css';
