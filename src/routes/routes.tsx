@@ -22,30 +22,30 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path:'/home',
-        element:<Home/>
+        path: '/home',
+        element: <Home />
       },
       {
         path: '/products',
-        element: <Products/>
+        element: <Products />
       },
       {
         path: '/addProduct',
-        element: <PrivateRoute><AddProducts/></PrivateRoute>,
+        element: <PrivateRoute><AddProducts /></PrivateRoute>,
       },
       {
         path: '/product-details/:id',
-        element: <ProductDetails/>,
+        element: <ProductDetails />,
       },
       {
         path: '/wishlist',
-        element: <PrivateRoute><WishList/></PrivateRoute>
+        element: <PrivateRoute><WishList /></PrivateRoute>
       },
       {
         path: '/reading',
-        element: <PrivateRoute><ReadingLIst/></PrivateRoute>
+        element: <PrivateRoute><ReadingLIst /></PrivateRoute>
       },
-    
+
     ],
   },
   {
@@ -54,11 +54,11 @@ const routes = createBrowserRouter([
   },
   {
     path: '/signup',
-    element: <Signup/>,
+    element: <Signup />,
   },
   {
     path: '*',
-    element: <NotFound/>,
+    element: <NotFound />,
   },
 ]);
 
