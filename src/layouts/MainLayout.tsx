@@ -3,12 +3,12 @@ import Footer from './Footer';
 
 export default function MainLayout() {
   return (
-    <div>
-   
+    <div className='mt-9'>
+
       <div className="py-16">
         <Outlet />
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

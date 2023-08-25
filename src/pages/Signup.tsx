@@ -22,6 +22,7 @@ export default function Signup() {
       toast.success('user created successfully')
     }
 
+
   }
   if (isError) {
     toast.error(error)

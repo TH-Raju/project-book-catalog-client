@@ -130,9 +130,9 @@ export default function Products() {
         </div>
       </form>
       <ToastContainer />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-5/6 mx-auto">
         {data?.data?.map((book: IBook) => (
-          <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card lg:w-96  bg-base-100 shadow-xl">
             <figure>
               <img src="https://l8.nu/rMS1" alt="Shoes" />
             </figure>
