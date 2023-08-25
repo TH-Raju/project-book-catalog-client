@@ -1,0 +1,11 @@
+.react-datepicker {
+    width: 100% !important;
+  }
+  
+  /* Adjust the width of the input field inside the date picker */
+  .react-datepicker__input-container input {
+    width: 100%;
+  }
+  .custom-datepicker-dropdown{
+    width: 100% !important
+  }
