@@ -8,7 +8,7 @@ import { setLoading, setUser } from './redux/features/user/userSlice';
 import { useAppDispatch } from './redux/hooks';
 
 function App() {
-  const dispatch =  useAppDispatch()
+  const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(setLoading(true));
 
@@ -24,7 +24,7 @@ function App() {
   }, [dispatch]);
   return (
     <div>
- <Navbar/>
+      <Navbar />
       <MainLayout />
     </div>
   );

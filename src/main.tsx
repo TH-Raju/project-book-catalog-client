@@ -9,10 +9,9 @@ import routes from './routes/routes.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
- 
-<Provider store={store}>
-<RouterProvider router={routes} />
-</Provider>
+    <Provider store={store}>
+      <RouterProvider router={routes} />
+    </Provider>
 
   </React.StrictMode>
 );

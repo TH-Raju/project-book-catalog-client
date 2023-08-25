@@ -18,24 +18,24 @@ export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
   const [Genre, setGenre] = useState("");
   const [Year, setYear] = useState(0);
-const {togglePostBook} =  useAppSelector(state=>state.book)
-const {wishlist,readingList} = useAppSelector(state => state.wishlist);
-const [addWishlist,{isError:wisherror,isLoading:wishloading}] =  usePostWishListMutation()
-const [addReadingList,{isError:readingerror,isLoading:readingLoading}] =  useAddToReadingListMutation()
-console.log(wishlist)
-console.log(wishlist); // 
-const {email} =  useAppSelector(state=>state.user.user)
+  const { togglePostBook } = useAppSelector(state => state.book)
+  const { wishlist, readingList } = useAppSelector(state => state.wishlist);
+  const [addWishlist, { isError: wisherror, isLoading: wishloading }] = usePostWishListMutation()
+  const [addReadingList, { isError: readingerror, isLoading: readingLoading }] = useAddToReadingListMutation()
+  console.log(wishlist)
+  console.log(wishlist); // 
+  const { email } = useAppSelector(state => state.user.user)
   const { data, error, isLoading } = useGetBooksQuery({ Genre, Year, searchTerm });
-  const {data:mainbook,isError,isLoading:bookloading} =  useGetAllBooksQuery(undefined)
-  
+  const { data: mainbook, isError, isLoading: bookloading } = useGetAllBooksQuery(undefined)
+
 
   const { status } = useAppSelector(state => state.book);
   const HandleSearch = (event: any) => {
     event.preventDefault();
     setSearchTerm(event.target.searchTerm.value);
- 
+
   };
- 
+
   const dispatch = useAppDispatch();
   const handleSingleBook = (book: IBook) => {
     dispatch(addBook(book));
@@ -46,43 +46,43 @@ const {email} =  useAppSelector(state=>state.user.user)
     dispatch(resetStatus());
   }
 
-  if(togglePostBook){
+  if (togglePostBook) {
     toast.success('book added successfully')
-   
+
   }
-  const handleAddWishList  = (book:IBook) =>{
- 
+  const handleAddWishList = (book: IBook) => {
+
 
     dispatch(addToWishlist(book))
     addWishlist(book)
-    if(!wisherror){
+    if (!wisherror) {
       toast.success('book added in wishlist')
     }
-    else{
+    else {
       toast.error('something went wrong')
     }
 
   }
-  const handleAddToReadingList  = (book:IBook) =>{
-  
-  dispatch(addToReadingList(book))
-  addReadingList(book)
-  if(!readingerror){
-    toast.success('book added in reading list')
+  const handleAddToReadingList = (book: IBook) => {
+
+    dispatch(addToReadingList(book))
+    addReadingList(book)
+    if (!readingerror) {
+      toast.success('book added in reading list')
+    }
+    else {
+      toast.error('something went wrong')
+    }
   }
-  else{
-    toast.error('something went wrong')
-  }
-  }
-  
+
   if (isLoading || bookloading) {
     return (
       <>
-       <div className="text-center">
-       <span className="loading text-center loading-bar text-white loading-lg"></span>
-       </div>
+        <div className="text-center">
+          <span className="loading text-center loading-bar text-white loading-lg"></span>
+        </div>
 
-     
+
       </>
     )
   }
@@ -96,7 +96,7 @@ const {email} =  useAppSelector(state=>state.user.user)
 
   return (
     <div className="containers mx-auto">
-     
+
       <form action="" onSubmit={HandleSearch}>
         <div className="join flex justify-center flex-row mb-4">
           <div className="max-w-xs">
@@ -105,35 +105,35 @@ const {email} =  useAppSelector(state=>state.user.user)
             </div>
           </div>
           <select className="select select-bordered join-item" onChange={(e) => setGenre(e.target.value)}>
-  <option value="">All Genres</option>
-  {mainbook?.data
-  ?.map((book: IBook) => book.Genre)
-  .filter((genre: string | undefined, index: number, genres: (string | undefined)[]) => genres.indexOf(genre) === index)
-  .map((genre: string | undefined, index: number) => (
-    <option value={genre} key={index}>
-      {genre}
-    </option>
-  ))}
+            <option value="">All Genres</option>
+            {mainbook?.data
+              ?.map((book: IBook) => book.Genre)
+              .filter((genre: string | undefined, index: number, genres: (string | undefined)[]) => genres.indexOf(genre) === index)
+              .map((genre: string | undefined, index: number) => (
+                <option value={genre} key={index}>
+                  {genre}
+                </option>
+              ))}
 
 
-</select>
+          </select>
 
-<select className="select select-bordered join-item" onChange={(e) => setYear(Number(e.target.value))}>
-<option value="">All Year</option>
-{Array.from(
-                    new Set(
-                      mainbook?.data.map((book: IBook) =>
-                        new Date(book.PublicationDate!).getFullYear()
-                      )
-                    )
-                  ).map((year) => (
-                    <option value={year?.toString()} key={year?.toString()}>
-                      {year as number}
-                    </option>
-                  ))}
-</select>
+          <select className="select select-bordered join-item" onChange={(e) => setYear(Number(e.target.value))}>
+            <option value="">All Year</option>
+            {Array.from(
+              new Set(
+                mainbook?.data.map((book: IBook) =>
+                  new Date(book.PublicationDate!).getFullYear()
+                )
+              )
+            ).map((year) => (
+              <option value={year?.toString()} key={year?.toString()}>
+                {year as number}
+              </option>
+            ))}
+          </select>
 
-         
+
           <div className="indicator">
             <span className="indicator-item badge badge-secondary">search here</span>
             <button type="submit" className="btn join-item">Search</button>
@@ -143,11 +143,11 @@ const {email} =  useAppSelector(state=>state.user.user)
       <ToastContainer />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {data?.data?.map((book: IBook) => (
-         <div className="card w-96 bg-base-100 shadow-xl">
-         <figure>
-        <img src="https://l8.nu/rMS1" alt="Shoes" />
-      </figure>
-          
+          <div className="card w-96 bg-base-100 shadow-xl">
+            <figure>
+              <img src="https://l8.nu/rMS1" alt="Shoes" />
+            </figure>
+
             <div className="card-body">
               <h2 className="card-title">{book?.Title}</h2>
               <p>Books have the power to transport us to new worlds, ignite our imaginations, and inspire us to reach for greatness.</p>
@@ -155,23 +155,23 @@ const {email} =  useAppSelector(state=>state.user.user)
               <p>Author: {book?.Author}</p>
               <p>Published: {book?.PublicationDate}</p>
               {
-                email &&     <div className="flex justify-around mb-4 mt-4">
-                <div className="indicator">
-                <span className="indicator-item badge badge-primary">wishlist</span> 
-  
-  <AiFillHeart  onClick={() => handleAddWishList(book)} size={44} color="white" />
+                email && <div className="flex justify-around mb-4 mt-4">
+                  <div className="indicator">
+                    <span className="indicator-item badge badge-primary">wishlist</span>
+
+                    <AiFillHeart onClick={() => handleAddWishList(book)} size={44} color="white" />
+                  </div>
+                  <div className="indicator">
+                    <span className="indicator-item badge  badge-secondary">readingList</span>
+                    <BiBookReader onClick={() => handleAddToReadingList(book)} size={44} color="white" />
+                  </div>
+
                 </div>
-                <div className="indicator">
-                <span className="indicator-item badge  badge-secondary">readingList</span> 
-                <BiBookReader onClick={() => handleAddToReadingList(book)}  size={44} color="white" />
-                </div>
-        
-      </div>
               }
               <div className="card-actions justify-end">
-              <Link to={`/product-details/${book._id}`}>
-                          <button onClick={() => handleSingleBook(book)} className="btn btn-primary border-0">view details</button>
-                        </Link>
+                <Link to={`/product-details/${book._id}`}>
+                  <button onClick={() => handleSingleBook(book)} className="btn btn-primary border-0">view details</button>
+                </Link>
               </div>
             </div>
           </div>
