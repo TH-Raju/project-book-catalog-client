@@ -27,11 +27,8 @@ export default function ProductDetails() {
     dispatch(deleteBook())
     navigate('/products')
     dispatch(resetStatus())
-
   }
   // Inside your component
-
-
   const handleReview = (event: any) => {
     event.preventDefault();
 
@@ -104,8 +101,6 @@ export default function ProductDetails() {
                     <button className="btn btn-primary bg-red-500 border-0" onClick={handleDelete}>Delete</button>
                   </>
                 )}
-
-
               </div>
             </div>
           </div>

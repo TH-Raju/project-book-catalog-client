@@ -5,8 +5,6 @@ import { IBook } from "@/types/BooksType";
 import { useState } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { BiBookReader } from 'react-icons/bi';
-
-
 import { addToReadingList, addToWishlist } from "@/redux/features/wishlist/whishListSlice";
 import { useAddToReadingListMutation, usePostWishListMutation } from "@/redux/features/wishlist/wishlistApi";
 import { Link } from "react-router-dom";
@@ -27,13 +25,10 @@ export default function Products() {
   const { email } = useAppSelector(state => state.user.user)
   const { data, error, isLoading } = useGetBooksQuery({ Genre, Year, searchTerm });
   const { data: mainbook, isError, isLoading: bookloading } = useGetAllBooksQuery(undefined)
-
-
   const { status } = useAppSelector(state => state.book);
   const HandleSearch = (event: any) => {
     event.preventDefault();
     setSearchTerm(event.target.searchTerm.value);
-
   };
 
   const dispatch = useAppDispatch();
@@ -51,7 +46,6 @@ export default function Products() {
 
   }
   const handleAddWishList = (book: IBook) => {
-
 
     dispatch(addToWishlist(book))
     addWishlist(book)
@@ -81,8 +75,6 @@ export default function Products() {
         <div className="text-center">
           <span className="loading text-center loading-bar text-white loading-lg"></span>
         </div>
-
-
       </>
     )
   }
@@ -96,7 +88,6 @@ export default function Products() {
 
   return (
     <div className="containers mx-auto">
-
       <form action="" onSubmit={HandleSearch}>
         <div className="join flex justify-center flex-row mb-4">
           <div className="max-w-xs">
@@ -114,8 +105,6 @@ export default function Products() {
                   {genre}
                 </option>
               ))}
-
-
           </select>
 
           <select className="select select-bordered join-item" onChange={(e) => setYear(Number(e.target.value))}>

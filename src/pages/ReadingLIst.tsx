@@ -5,10 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import './pages.css';
 export default function ReadingLIst() {
   const { email } = useAppSelector(state => state.user.user)
-
-  console.log(email)
+  // console.log(email)
   const { data, isLoading } = useGetReadingListQuery(email)
-
   const [updateStaus, { isLoading: updateLoading, isError, isSuccess, error }] = useUpdateReadingStatusMutation()
   const handleupdateStatus = (id: string) => {
     updateStaus(id)
