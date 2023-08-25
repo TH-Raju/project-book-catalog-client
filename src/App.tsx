@@ -24,7 +24,7 @@ function App() {
     });
   }, [dispatch]);
   return (
-    <div>
+    <div >
       <Navbar />
       <MainLayout />
     </div>
